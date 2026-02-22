@@ -1,0 +1,199 @@
+/* Transparent orange navbar (10% opacity) */
+.home-page .navbar {
+  background-color: rgba(76, 73, 73, 0.3) !important; /* orange with 10% opacity */
+  box-shadow: none !important; /* remove shadow */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: top 0.3s ease-in-out; /* smooth hide/show */
+  border-bottom: 1px solid rgba(94, 71, 71, 0.15); /* faint line */
+  backdrop-filter: blur(5px);
+}
+
+.home-page .header-btn {
+  display: flex;             /* horizontal layout */
+  align-items: center;       /* vertically center icon and text */
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  padding: 8px 16px;
+  gap: 10px;                 /* space between icon and texts */
+  transition: all 0.3s ease;
+  border-radius: 50px;       /* pill shape */
+}
+
+.home-page .header-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.home-page .header-icon {
+  font-size: 28px;
+  flex-shrink: 0;            /* prevent icon from shrinking */
+}
+
+.home-page .btn-texts {
+  display: flex;
+  flex-direction: column;    /* stack main and subtext vertically */
+  line-height: 1;
+}
+
+.home-page .main-text {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.home-page .sub-text {
+  font-size: 12px;
+  margin-top: 2px;
+}
+/* Modal styling (unchanged) */
+.home-page .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.home-page .login-modal-wrapper {
+  position: relative;
+  width: 360px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.home-page .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 22px;
+  background: transparent;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+}
+
+
+
+
+
+
+.other-page .navbar {
+  background-color: rgba(226, 130, 92, 0.381) !important; /* orange with 10% opacity */
+  box-shadow: none !important; /* remove shadow */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: top 0.3s ease-in-out; /* smooth hide/show */
+  border-bottom: 1px solid rgba(255, 95, 9, 0.748); /* faint line */
+  backdrop-filter: blur(5px);
+}
+
+/* Header button on other pages */
+.other-page .header-btn {
+  color: #000; /* black text */
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 50px; /* same pill shape */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for buttons on other pages */
+.other-page .header-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* light grey overlay */
+  color: #000;
+}
+
+/* Icon inside button remains same size */
+.other-page .header-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+/* Text inside button remains same layout */
+.other-page .btn-texts {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.other-page .main-text {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.other-page .sub-text {
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+
+
+
+.header-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  color: white;
+  min-width: 160px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  z-index: 2000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.header-dropdown a {
+  padding: 10px 16px;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  opacity: 0;                    /* start hidden */
+  transform: translateY(-10px);  /* slide up start */
+  animation: slideIn 0.3s forwards;
+}
+
+.header-dropdown a:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* stagger animation for each item */
+.header-dropdown a:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.header-dropdown a:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.header-dropdown a:nth-child(3) {
+  animation-delay: 0.25s;
+}
+
+/* animation keyframes */
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

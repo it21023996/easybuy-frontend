@@ -6,8 +6,11 @@ export const AuthProvider = ({children})=> {
     const [token,setToken] = useState(localStorage.getItem("token") || null)
     const [userId,setUserId] = useState(localStorage.getItem("userId") || null)
     const [role,setRole] = useState(localStorage.getItem("role") || null)
+    const [userName, setUserName] = useState(localStorage.getItem("userName") || null);
 
     useEffect(()=> {
+        if(token)localStorage.setItem("userName",userName);
+        else localStorage.removeItem("userName")
 
         if(token) localStorage.setItem("token",token);
         else localStorage.removeItem("token");
@@ -17,11 +20,12 @@ export const AuthProvider = ({children})=> {
 
         if(role) localStorage.setItem("role",role);
         else localStorage.removeItem("role")
-    },[token,userId,role])
+    },[token,userId,role,userName])
 
     const login = (loginData)=>{
         setToken(loginData.token)
         setUserId(loginData.userId)
+        setUserName(loginData.userName)
         setRole(loginData.role)
     }
 
@@ -29,11 +33,12 @@ export const AuthProvider = ({children})=> {
         setToken(null);
         setUserId(null);
         setRole(null);
+        setUserName(null);
         localStorage.clear();
     }
 
     return (
-        <AuthContext.Provider value={{token,userId,role,login,logout}}>
+        <AuthContext.Provider value={{token,userId,role,userName,login,logout}}>
             {children}
         </AuthContext.Provider>
     )

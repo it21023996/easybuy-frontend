@@ -1,0 +1,13 @@
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* main content area */
+.page-content {
+  flex: 1;                  /* takes all remaining space between header & footer */
+  padding-top: 80px;        /* space for header height */
+  padding-left: 20px;
+  padding-right: 20px;
+}

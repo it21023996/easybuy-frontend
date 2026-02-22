@@ -1,0 +1,195 @@
+/* close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.login-modal-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* spacing between inputs and button */
+}
+
+/* inputs */
+.login-modal-wrapper input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 12px;
+  outline: none;
+}
+
+.login-modal-wrapper input:focus {
+  border-color: #ea7305;
+}
+
+/* submit button */
+.login-modal-wrapper button[type="submit"] {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff9100;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.login-modal-wrapper button[type="submit"]:hover {
+  background-color: #009f1b;
+}
+
+.login-modal-wrapper button[type="submit"]:disabled {
+  background-color: #954804;
+  cursor: not-allowed;
+}
+
+/* register link */
+.register-text {
+  font-size: 13px;
+  text-align: center;
+  color: #666;
+}
+
+.register-link {
+  color: #ff9100;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+/* error message only */
+.message-error {
+  font-size: 13px;
+  text-align: center;
+  color: #f90000;
+}
+.login-title{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 32px;            
+  font-weight: 700;            /* bold to make it stand out */
+  text-align: center;           /* centered inside modal */
+  color: #ff8800;                  /* dark gray, soft on the eyes */
+  margin-bottom: 20px;          /* space below the title before inputs */
+  letter-spacing: 0.5px;
+}
+.login-features {
+  display: flex;                   /* side by side layout */
+  justify-content: space-between;  /* one left, one right */
+  margin-bottom: 20px;
+  gap: 20px;                       /* space between two units */
+}
+
+/* Each feature unit */
+.feature-item {
+  display: flex;
+  flex-direction: column;          /* icon on top, text below */
+  align-items: center;             /* center horizontally */
+  gap: 4px;                        /* space between icon and text */
+  flex: 1;                         /* equal width for both units */
+}
+
+/* Icon style */
+.feature-icon {
+  font-size: 24px;                 /* big enough to stand out */
+}
+
+/* Text style */
+.feature-text {
+  font-size: 16px;
+  color: #110303;
+  text-align: center;
+}
+.feature-text-sub {
+  font-size: 12px;
+  color: #464343;
+  text-align: center;
+}
+
+/* ===== PAGE VERSION (full page login) ===== */
+.login-page-wrapper {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  padding: 20px;
+}
+
+/* form card on page */
+.login-page-wrapper form {
+  width: 100%;
+  max-width: 420px;              /* nice readable width */
+  display: flex;
+  flex-direction: column;        /* 🔥 THIS fixes side-by-side issue */
+  gap: 14px;
+  padding: 28px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* inputs (page version) */
+.login-page-wrapper input {
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+}
+
+.login-page-wrapper input:focus {
+  border-color: #ea7305;
+}
+
+/* button (page version) */
+.login-page-wrapper button[type="submit"] {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff9100;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.login-page-wrapper button[type="submit"]:hover {
+  background-color: #009f1b;
+}
+
+.login-page-wrapper button[type="submit"]:disabled {
+  background-color: #954804;
+  cursor: not-allowed;
+}
+/* wrapper */
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+/* input padding so icon doesn't overlap text */
+.password-field input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+/* eye icon */
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
