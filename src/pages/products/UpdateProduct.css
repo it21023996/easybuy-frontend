@@ -1,0 +1,543 @@
+/* UpdateProduct.css */
+
+/* Container Styles */
+.update-product-container {
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.update-back-button-outside {
+    position: fixed;
+    left: 20px;
+    top: 20%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.4);
+    z-index: 1000;
+    min-width: 60px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.update-back-button-outside i {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+}
+
+.update-back-button-outside span {
+    
+    text-orientation: mixed;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.update-back-button-outside:hover {
+    background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+    box-shadow: 0 12px 25px rgba(13, 110, 253, 0.5);
+    transform: translateY(-50%) scale(1.05);
+    left: 25px;
+}
+
+.update-back-button-outside:hover i {
+    transform: translateX(-3px);
+}
+
+.update-back-button-outside:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .update-back-button-outside {
+        left: 10px;
+        padding: 0.75rem 0.5rem;
+        min-width: 50px;
+    }
+    
+    .update-back-button-outside i {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .update-back-button-outside {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+        transform: none;
+        flex-direction: row;
+        padding: 0.75rem 1.25rem;
+        border-radius: 50px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .update-back-button-outside span {
+        writing-mode: horizontal-tb;
+        font-size: 0.9rem;
+    }
+    
+    .update-back-button-outside i {
+        font-size: 1.2rem;
+    }
+    
+    .update-back-button-outside:hover {
+        transform: scale(1.05);
+        left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .update-back-button-outside {
+        bottom: 15px;
+        left: 15px;
+        padding: 0.6rem 1rem;
+    }
+    
+    .update-back-button-outside span {
+        display: none; /* Hide text on very small screens */
+    }
+    
+    .update-back-button-outside i {
+        font-size: 1.4rem;
+        margin: 0;
+    }
+}
+/* Card Styles */
+.update-product-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.update-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 50px rgba(220, 53, 69, 0.2);
+}
+
+/* Red Header Styles */
+.update-product-header {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    padding: 1.5rem 2rem;
+    border-bottom: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.update-product-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: headerShine 6s infinite;
+}
+
+@keyframes headerShine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    20%, 100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+.update-product-title {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.update-product-id {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    margin: 0.5rem 0 0;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.update-product-id strong {
+    color: white;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+}
+
+/* Card Body */
+.update-product-body {
+    padding: 2rem;
+}
+
+/* Form Group Styles */
+.update-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.update-form-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.update-form-label i {
+    color: #dc3545;
+    font-size: 1.1rem;
+}
+
+/* Input Field Styles */
+.update-form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    width: 100%;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.update-form-control:hover {
+    border-color: #adb5bd;
+}
+
+.update-form-control:focus {
+    border-color: #fd7e14;
+    box-shadow: 0 0 0 0.25rem rgba(253, 126, 20, 0.25);
+    outline: none;
+}
+
+.update-form-control-lg {
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+}
+
+/* Textarea Styles */
+.update-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Select Field Styles */
+.update-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23495057' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px;
+    padding-right: 2.5rem;
+}
+
+/* Category Info */
+.update-category-info {
+    margin-top: 0.5rem;
+    color: #6c757d;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.update-category-info i {
+    color: #fd7e14;
+}
+
+.update-category-badge {
+    font-weight: 600;
+    color: #fd7e14;
+    background: rgba(253, 126, 20, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+/* Active Status Badge */
+.update-status-badge {
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.update-status-badge .badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.update-status-badge .badge-success {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    color: white;
+}
+
+.update-status-badge .badge-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+}
+
+/* Image Upload Section */
+.update-image-section {
+    border: 2px dashed #dee2e6;
+    border-radius: 16px;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.update-image-section:hover {
+    border-color: #fd7e14;
+    background: #fff4e6;
+}
+
+.update-image-badge {
+    margin-top: 1rem;
+}
+
+.update-image-badge .badge {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Update Button Styles */
+.update-btn {
+    background: linear-gradient(135deg, #fd7e14 0%, #e06b0a 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.update-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.update-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+}
+
+.update-btn:hover:not(:disabled)::before {
+    width: 300px;
+    height: 300px;
+}
+
+.update-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background: linear-gradient(135deg, #adb5bd 0%, #868e96 100%);
+}
+
+.update-btn i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.update-btn:hover:not(:disabled) i {
+    transform: translateX(5px);
+}
+
+/* Loading Spinner */
+.update-spinner {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 0.75rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Alert Messages */
+.update-alert {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.update-alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.update-alert-error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.update-alert-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    color: inherit;
+}
+
+.update-alert-close:hover {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .update-product-container {
+        padding: 1rem;
+    }
+    
+    .update-product-header {
+        padding: 1.25rem;
+    }
+    
+    .update-product-title {
+        font-size: 1.5rem;
+    }
+    
+    .update-product-body {
+        padding: 1.25rem;
+    }
+    
+    .update-form-control-lg {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .update-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Grid System */
+.update-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.75rem;
+}
+
+.update-col-6 {
+    width: 50%;
+    padding: 0.75rem;
+}
+
+.update-col-12 {
+    width: 100%;
+    padding: 0.75rem;
+}
+
+/* Professional Fonts */
+.update-product-container * {
+    font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Animation for form fields */
+.update-form-control {
+    animation: fadeInUp 0.5s ease backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation for form groups */
+.update-form-group:nth-child(1) .update-form-control { animation-delay: 0.1s; }
+.update-form-group:nth-child(2) .update-form-control { animation-delay: 0.2s; }
+.update-form-group:nth-child(3) .update-form-control { animation-delay: 0.3s; }
+.update-form-group:nth-child(4) .update-form-control { animation-delay: 0.4s; }
+.update-form-group:nth-child(5) .update-form-control { animation-delay: 0.5s; }
+.update-form-group:nth-child(6) .update-form-control { animation-delay: 0.6s; }

@@ -8,10 +8,11 @@ export const updateProduct = (productId,data)=>{
     return axiosInstance.patch(`/products/${productId}`,data)
 }
 
-export const getAllProducts = (categoryName,productName,page,size) =>{
+export const getAllProducts = (categoryId,productName,active,page,size) =>{
     const params = {page,size}
-    if(categoryName) params.categoryName = categoryName;
+    if(categoryId) params.categoryId = categoryId; 
     if(productName) params.productName = productName;
+    if(active) params.active = active;
     return axiosInstance.get(`/products`,{params})
 }
 

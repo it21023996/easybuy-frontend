@@ -28,7 +28,7 @@ function Login({isModal = false,onClose}) {
         login(res.data.data);
         setMessage("Login Successfull");
         console.log(res.data.data);
-        navigate('/dashboard')
+        navigate('/')
         if(onClose) onClose();
     }catch(err){
         setMessage("Login failed. Please check your credentials.");

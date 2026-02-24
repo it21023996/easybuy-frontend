@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Children } from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import { AuthContext } from '../../../context/authContext';
 import { useContext } from 'react';
@@ -9,7 +9,7 @@ import logo from '../../../assets/logo.svg'
 import { FaUserCircle } from "react-icons/fa";
 function NavBar() {
   const navigate = useNavigate();
-  const {userName,token} = useContext(AuthContext);
+  const {userName,token,logout} = useContext(AuthContext);
   const [showLogin,setShowLogin] = useState(false);
   const openLogin = ()=> setShowLogin(true);
   const closeLogin = () => setShowLogin(false);
@@ -32,7 +32,31 @@ function NavBar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos]);
 
-  const toggleDropDown = ()=> setShowDropdown(!showDropdown);
+  const handleMouseLeave = () => {
+    setTimeout(() => setShowDropdown(false), 100); 
+  };
+
+  const menuitem = [{
+    label : "Products",
+    Children : [
+      {label : "All Products",path : "/products/product-table" },
+      {label : "Add Product",path :"/products/add-product"},
+      {label : "Update/Remove Product",path : "/"}
+    ]
+  },{
+    label : "Account",
+    Children : [
+      {label : "View Account",path : "/"},
+      {label : "update/Delete Account",path : "/"}
+    ]
+  },{
+    label : "LogOut",action: "logout",
+    onClick : ()=> {
+      logout();
+      setShowDropdown(false);
+      navigate("/")
+    }
+  } ]
   return (
     <>
     <div className={`page-wrapper ${window.location.pathname === '/' ? 'home-page' : 'other-page'}`}>
@@ -48,7 +72,9 @@ function NavBar() {
           </span>
 
           
-          <div className="ms-auto position-relative">
+          <div className="ms-auto position-relative dropdown-wrapper"
+          onMouseEnter={() => setShowDropdown(true)}
+          onMouseLeave={ handleMouseLeave}>
             {!token ? (
             <button
               className="header-btn"
@@ -59,11 +85,9 @@ function NavBar() {
             <span className="sub-text">Orders & Account</span>
             </div>
             </button>
-            ) : (<div className="dropdown-wrapper" onMouseEnter={() => setShowDropdown(true)}
-      onMouseLeave={() => setShowDropdown(false)}>
+            ) : (<>
             <button
-              className="header-btn"
-              onMouseEnter={toggleDropDown}>
+              className="header-btn">
                 <FaUserCircle className="header-icon" />
                 <div className="btn-texts">
                 <span className="main-text">{!token ? "Login / Register" : "Hello, " + userName}</span>
@@ -72,16 +96,25 @@ function NavBar() {
             </button> 
             
             {showDropdown && (
-              <div className='header-dropdown' >
-                <Link to="/dashboard" onClick={()=>setShowDropdown(false)}>Orders</Link>
-                <Link to="/" >Account</Link>
-                <Link to="/" >Account</Link>
-                <Link to="/" >Account</Link>
-                <Link to="/" >Account</Link>
+              <div className={`mega-overlay ${showDropdown ? 'show' : ''}`}>
+                <div className='mega-menu container'>
+                {menuitem.map((item,index)=> (
+                  <div key = {index}
+                  className='mega-column'>
+                    {item.path ? (<Link to={item.path} className='mega-title' onClick={handleMouseLeave}>{item.label}</Link>) : 
+                    item.onClick ? ( <div  className="mega-links"> <Link onClick={item.onClick} className="mega-link">{item.label}</Link></div>) : (<div className='mega-title'>{item.label}  </div>) }
+                    {item.Children && (
+                      <div className="mega-links">{item.Children.map((sub,subIndex) => (
+                        <Link key={subIndex} to ={sub.path} onClick={handleMouseLeave} className="mega-link">{sub.label}</Link>
+                      ))}</div>
+                    )}
+                  </div>
+                ))}
+                </div>
                 </div>
             )}
             
-             </div>)}
+             </>)}
           </div>
 
         </div>

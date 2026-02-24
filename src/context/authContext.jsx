@@ -20,13 +20,17 @@ export const AuthProvider = ({children})=> {
 
         if(role) localStorage.setItem("role",role);
         else localStorage.removeItem("role")
+
+        
     },[token,userId,role,userName])
 
     const login = (loginData)=>{
-        setToken(loginData.token)
+        const expiryTime = Date.now() + 3600000;
+        setToken(loginData.token,)
         setUserId(loginData.userId)
         setUserName(loginData.userName)
         setRole(loginData.role)
+        localStorage.setItem("tokenExpiry", expiryTime);
     }
 
     const logout = () => {

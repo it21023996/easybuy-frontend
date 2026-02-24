@@ -1,0 +1,16 @@
+.product-images-input {
+  /* Your styles here */
+  background-color: #f8f9fa;
+  color: #333;
+  font-family: 'Inter', sans-serif;
+}
+
+.product-images-input:hover {
+  background-color: #e9ecef;
+  border-color: #dc3545;
+}
+
+.product-images-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
