@@ -9,13 +9,13 @@ export const getCartById = ()=>{
 }
 
 export const updateCartItemQuantity= (cartId,cartItemId,data)=>{
-    return axiosInstance.patch(`/${cartId}/items/${cartItemId}`,data)
+    return axiosInstance.patch(`/carts/${cartId}/items/${cartItemId}`,data)
 }
 
 export const deleteItemFromCart = (cartId,cartItemId)=>{
-    return axiosInstance.delete(`/${cartId}/items/${cartItemId}`)
+    return axiosInstance.delete(`/carts/${cartId}/items/${cartItemId}`)
 }
 
 export const clearCart = (cartId)=>{
-    return axiosInstance.delete(`/${cartId}/clear`)
+    return axiosInstance.delete(`/carts/${cartId}/clear`)
 }

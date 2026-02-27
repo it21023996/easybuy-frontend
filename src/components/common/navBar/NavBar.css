@@ -280,3 +280,205 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+/* ===== NAV SEARCH BAR ===== */
+.nav-search-input {
+  height: 36px;
+  width: 750px;
+  padding: 0 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.4);
+  outline: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+/* placeholder color */
+.nav-search-input::placeholder {
+  color: rgba(255,255,255,0.75);
+}
+
+/* focus effect */
+.nav-search-input:focus {
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.7);
+  width: 800px;
+}
+
+
+/* NAVBAR CATEGORY DROPDOWN */
+.nav-category-dropdown select {
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;
+  padding: 6px 30px 6px 12px; 
+  height: 36px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0); /* always black */
+  color: white;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+/* Add a small dropdown arrow using ::after */
+.nav-category-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-category-dropdown::after {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 10px;
+  color: white;
+}
+
+/* Options styling for modern browsers */
+.nav-category-dropdown select option {
+  background-color: black; /* solid black for options */
+  color: white;
+  padding: 6px 12px;
+}
+
+/* Hover/focus effect */
+.nav-category-dropdown select:focus {
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.3); /* subtle highlight */
+  background-color: black; /* ensure stays black on focus */
+}
+
+/* Flex wrapper for search + category */
+.nav-search-category-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between search and dropdown */
+}
+.header {
+  position: relative;
+}
+
+.cart-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+.cart-icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 28px;
+  color: #333;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-icon-btn:hover {
+  transform: scale(1.1);
+  color: #ff8c42; /* Match your theme color */
+}
+
+/* This should match your JSX class name */
+.cart-count {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  background-color: #dc5303;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 16px;
+  min-width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transform: translate(25%, -25%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+  animation: pop 0.3s ease;
+}
+
+/* Optional: Add animation when count updates */
+@keyframes pop {
+  0% {
+    transform: translate(25%, -25%) scale(0.8);
+  }
+  50% {
+    transform: translate(25%, -25%) scale(1.2);
+  }
+  100% {
+    transform: translate(25%, -25%) scale(1);
+  }
+}
+
+/* For larger counts (99+) */
+.cart-count.large {
+  font-size: 10px;
+  padding: 2px 4px;
+  min-width: 22px;
+}
+
+/* Cart dropdown positioning */
+.cart-dropdown {
+  position: absolute;
+  top: 60px; /* Adjust based on your header height */
+  right: 20px;
+  width: 400px;
+  max-width: 90vw;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cart-dropdown {
+    width: 350px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-dropdown {
+    width: 300px;
+    right: 5px;
+  }
+  
+  .cart-icon-btn {
+    font-size: 24px;
+    padding: 8px;
+  }
+}

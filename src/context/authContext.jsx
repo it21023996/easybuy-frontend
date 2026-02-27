@@ -26,7 +26,7 @@ export const AuthProvider = ({children})=> {
 
     const login = (loginData)=>{
         const expiryTime = Date.now() + 3600000;
-        setToken(loginData.token,)
+        setToken(loginData.token)
         setUserId(loginData.userId)
         setUserName(loginData.userName)
         setRole(loginData.role)

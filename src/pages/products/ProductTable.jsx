@@ -12,6 +12,7 @@ function ProductTable() {
     const [pageNumber,setPageNumber] = useState(0)
     const [pageSize,setPageSize] = useState(10)
     const [active,setActive] = useState(null);
+    const [totalPages,setTotalPages] = useState(0);
     useEffect(()=>{
         
         const fetchProducts = async()=>{
@@ -30,6 +31,7 @@ function ProductTable() {
                     pageSize
                 )
                 setProducts(response.data.data.content)
+                setTotalPages(response.data.data.totalPages)
 
                 console.log(response.data)
                 
@@ -60,6 +62,7 @@ function ProductTable() {
             maximumFractionDigits: 2
         });
     };
+    
   return (
     <>
     <div  className="update-product-actions">
@@ -101,8 +104,7 @@ function ProductTable() {
                 </div></div>
     <table className="product-table">
         
-        <tbody>
-            {products.map((product)=>(
+        <tbody>{products.length > 0 ? (products.map((product)=>(
                 <tr key={product.productId} className="product-row">
                     <td className="product-cell">
                         <div className="product-container">
@@ -151,9 +153,29 @@ function ProductTable() {
                         </div>
                     </td>
                 </tr>
-            ))}
+            )))  : (
+        <tr>
+            <td colSpan="1">
+                <div className="no-products-row">
+                    <p>No Products Found</p>
+                </div>
+            </td>
+        </tr>
+    )  }
+            
         </tbody>
     </table>
+    <div className="d-flex justify-content-center align-items-center my-4 gap-3">
+      <button disabled={pageNumber === 0} onClick={() => setPageNumber(prev => prev -1)} className="btn btn-primary btn-sm">
+        Previous
+        </button>
+      <span className="page-info">
+        Page {pageNumber+1} of {totalPages}
+        </span>
+      <button disabled={pageNumber+1 >= totalPages} onClick={()=> setPageNumber(prev => prev +1)} className="btn btn-primary btn-sm">
+        Next
+        </button>
+    </div>
     </>
   )
 }

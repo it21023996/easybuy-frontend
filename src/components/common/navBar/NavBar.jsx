@@ -1,5 +1,5 @@
-import React, { Children } from 'react'
-import { useNavigate,Link } from 'react-router-dom'
+import React, { Children, use } from 'react'
+import { useNavigate,Link,useLocation  } from 'react-router-dom'
 import { AuthContext } from '../../../context/authContext';
 import { useContext } from 'react';
 import { useState,useEffect } from 'react';
@@ -7,15 +7,52 @@ import Login from '../../../pages/auth/Login';
 import './NavBar.css'
 import logo from '../../../assets/logo.svg'
 import { FaUserCircle } from "react-icons/fa";
-function NavBar() {
+import CategoryDropdown from '../dropdowns/CategoryDropdown';
+import SearchBar from '../dropdowns/SearchBar';
+import Cart from '../../../pages/cart/Cart';
+import { getCartById } from '../../../api/cartApi';
+function NavBar({onCategoryChange,searchTerm,setSearchTerm}) {
+
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
   const navigate = useNavigate();
   const {userName,token,logout} = useContext(AuthContext);
+  const {role} = useContext(AuthContext)
+  const isAdmin = role === "ADMIN";
+  const isUser = role === "USER";
   const [showLogin,setShowLogin] = useState(false);
   const openLogin = ()=> setShowLogin(true);
   const closeLogin = () => setShowLogin(false);
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
   const [showDropdown,setShowDropdown] = useState(false);
+  const [selectedCategory,setSelectedCategory] = useState("")
+  const [showCart,setShowCart] = useState(false);
+
+  const [productCount,setProductCount] = useState(0);
+
+  
+  useEffect(()=>{
+    const fetchCart = async()=> {
+    try{
+      const response = await getCartById();
+      setProductCount(response.data.data.cartItemDTOList.length);
+      console.log("Cart items count:",response.data.data.cartItemDTOList.length || 0);
+    }catch(error){
+      console.error("Error fetching cart data:",error);
+    }
+  }
+  fetchCart();
+   },[token])
+
+  
+
+  const handleLogout =()=> {
+        logout();
+        setSearchTerm("");
+        onCategoryChange("");
+        navigate("/");
+    }
   
   useEffect(() => {
     const handleScroll = () => {
@@ -36,14 +73,19 @@ function NavBar() {
     setTimeout(() => setShowDropdown(false), 100); 
   };
 
-  const menuitem = [{
+  const adminMenuitem = [{
     label : "Products",
     Children : [
       {label : "All Products",path : "/products/product-table" },
-      {label : "Add Product",path :"/products/add-product"},
-      {label : "Update/Remove Product",path : "/"}
+      {label : "Add Product",path :"/products/add-product"}
     ]
   },{
+    label : "Orders",
+    Children : [
+      {label : "View All Orders",path : "/orders"}
+    ]
+  },
+  {
     label : "Account",
     Children : [
       {label : "View Account",path : "/"},
@@ -57,6 +99,32 @@ function NavBar() {
       navigate("/")
     }
   } ]
+
+  const userMenuitem = [{
+    label : "Cart",
+    Children : [
+      {label : "View Cart",path : "/cart" },
+    ]
+  },{
+    label : "Orders",
+    Children : [
+      {label : "View Orders",path : "/my-orders"}
+    ]
+  },
+  {
+    label : "Account",
+    Children : [
+      {label : "View Account",path : "/"},
+      {label : "update/Delete Account",path : "/"}
+    ]
+  },{
+    label : "LogOut",action: "logout",
+    onClick : handleLogout
+  } ]
+
+  const toggleCart = () => {
+    setShowCart(prev => !prev);
+  }
   return (
     <>
     <div className={`page-wrapper ${window.location.pathname === '/' ? 'home-page' : 'other-page'}`}>
@@ -66,10 +134,27 @@ function NavBar() {
 
           
           <span className="navbar-brand fw-bold">
-            <Link to="/" className='navbar-brand fw-bold'>
+            <a href="/" className='navbar-brand fw-bold'>
             <img src={logo} alt='logo' height='40' className="d-inline-block align-text-top"></img>
-            </Link> 
+            </a> 
           </span>
+
+          {isHomePage &&  (<>
+          <div className="nav-search-category-wrapper">          
+            <div>
+            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+          </div>
+          
+          <div>
+            <CategoryDropdown className="category-dropdown" onChange={(value)=>onCategoryChange(value)}/>
+          </div>
+          <p>{console.log(selectedCategory)}</p>
+          </div>
+          </>)}
+          
+
+
+
 
           
           <div className="ms-auto position-relative dropdown-wrapper"
@@ -98,7 +183,18 @@ function NavBar() {
             {showDropdown && (
               <div className={`mega-overlay ${showDropdown ? 'show' : ''}`}>
                 <div className='mega-menu container'>
-                {menuitem.map((item,index)=> (
+                  {isAdmin ? adminMenuitem.map((item,index)=> (
+                  <div key = {index}
+                  className='mega-column'>
+                    {item.path ? (<Link to={item.path} className='mega-title' onClick={handleMouseLeave}>{item.label}</Link>) : 
+                    item.onClick ? ( <div  className="mega-links"> <Link onClick={item.onClick} className="mega-link">{item.label}</Link></div>) : (<div className='mega-title'>{item.label}  </div>) }
+                    {item.Children && (
+                      <div className="mega-links">{item.Children.map((sub,subIndex) => (
+                        <Link key={subIndex} to ={sub.path} onClick={handleMouseLeave} className="mega-link">{sub.label}</Link>
+                      ))}</div>
+                    )}
+                  </div>
+                )) : userMenuitem.map((item,index)=> (
                   <div key = {index}
                   className='mega-column'>
                     {item.path ? (<Link to={item.path} className='mega-title' onClick={handleMouseLeave}>{item.label}</Link>) : 
@@ -110,12 +206,29 @@ function NavBar() {
                     )}
                   </div>
                 ))}
+                
+
+
                 </div>
                 </div>
             )}
             
              </>)}
+
+             
           </div>
+          {isUser && (<>
+             
+             <button className="cart-icon-btn" onClick={toggleCart}>
+        🛒
+        {productCount > 0 && <span className="cart-count">{productCount}</span>}
+      </button>
+          {showCart && <div className="cart-dropdown">
+          <Cart variant="modal" onClose={()=>setShowCart(false)} />
+        </div>}
+             </>)}
+          
+          
 
         </div>
       </nav>

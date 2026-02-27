@@ -34,12 +34,14 @@ function CategoryDropdown({onChange,className }) {
 
   return (
     <>
+    <div className={`nav-category-dropdown ${className || ""}`}>
     <select value={selectedCategory} onChange={handleChange}  className={className}>
-        <option value="">Select Category</option>
+        <option value="">All Categories</option>
         {categories.map((category)=>(
             <option key ={category.categoryId}value={category.categoryId}>{category.name}</option>
         ))}
     </select>
+    </div>
     </>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import NavBar from "../navBar/NavBar";
 import './Header.css'
-function Header() {
+function Header({onCategoryChange,searchTerm, setSearchTerm}) {
   return (
     <>
-    <NavBar/>
+    <NavBar onCategoryChange={onCategoryChange} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
     <div className="header-spacer"></div>
     </>
   )

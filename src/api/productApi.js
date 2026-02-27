@@ -15,6 +15,19 @@ export const getAllProducts = (categoryId,productName,active,page,size) =>{
     if(active) params.active = active;
     return axiosInstance.get(`/products`,{params})
 }
+export const getAllActiveProducts = (categoryId,productName,page,size) =>{
+    const params = {page,size}
+    if(categoryId) params.categoryId = categoryId; 
+    if(productName) params.productName = productName;
+    return axiosInstance.get(`/products/get-all-products`,{params})
+}
+
+export const getAllActiveProductsSearch = (categoryId,search,page,size) =>{
+    const params = {page,size}
+    if(categoryId) params.categoryId = categoryId; 
+    if(search) params.search = search;
+    return axiosInstance.get(`/products/get-all-products-search`,{params})
+}
 
 export const getProductById = (productId)=>{
     return axiosInstance.get(`/products/${productId}`)
