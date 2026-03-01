@@ -69,7 +69,7 @@ function ProductTable() {
         <div className="actions-horizontal">
             <div>
               <div className="toggle-container">
-    <label htmlFor='productActive'>Product Active Status</label>
+    <label htmlFor='productActive' >Product Active Status</label>
     <div className="toggle-switch tri-state">
     <div className="tri-state-container">
         <button 

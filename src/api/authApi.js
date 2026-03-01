@@ -5,5 +5,5 @@ export const loginUser = (data) =>{
 }
 
 export const registerUser = (data)=>{
-    return publicAxios.post("/users",data)
+    return publicAxios.post("/users/register",data)
 }

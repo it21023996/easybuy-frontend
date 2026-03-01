@@ -31,9 +31,17 @@ function NavBar({onCategoryChange,searchTerm,setSearchTerm}) {
 
   const [productCount,setProductCount] = useState(0);
 
+  const isAuthenticated = () => {
+    const token = localStorage.getItem("token")
+    return !!token
+  }
   
   useEffect(()=>{
     const fetchCart = async()=> {
+      if (!isAuthenticated()) {
+      console.log('User not authenticated, skipping cart fetch')
+      return
+    }
     try{
       const response = await getCartById();
       setProductCount(response.data.data.cartItemDTOList.length);
@@ -43,7 +51,7 @@ function NavBar({onCategoryChange,searchTerm,setSearchTerm}) {
     }
   }
   fetchCart();
-   },[token])
+   },[isUser])
 
   
 

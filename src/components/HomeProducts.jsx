@@ -202,12 +202,13 @@ function HomeProducts({selectedCategory, searchTerm, setSearchTerm}) {
                                             </span>
                                         </div>
                                     </div>
-
+                                    {isUser && (
                                     <div>
                                         <label htmlFor={`quantity-${product.productId}`} className="quantity-label">Quantity:</label>
                                         <input type="number" min="1" defaultValue="1" className="quantity-input"
                                         onChange={(e) => setQuantity(e.target.value)} />
                                     </div>
+                        )}
                                     
                                     <p className="product-description">{product.description}</p>
                                     {isUser && (

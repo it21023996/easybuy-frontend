@@ -52,9 +52,7 @@ console.log("Type:", typeof response.data.data)
   const handlechange =(e) => {
     const value = e.target.value;
     setOrderStatus(value);
-    if(onChange){
-      onChange(value)
-    }
+    
   }
 
   return (

@@ -5,6 +5,7 @@ import { addselectedOrder } from '../../api/orderApi'
 import './CartPage.css'
 import './CartModal.css'
 import { useNavigate } from 'react-router-dom'
+
 function Cart({ variant = "page",onClose }) {
   const navigate = useNavigate();
   const [cart,setCart] = useState({});
@@ -16,7 +17,16 @@ function Cart({ variant = "page",onClose }) {
   const [totalItems,setTotalItems] = useState(0);
   const [selectedItems,setSelectedItems] = useState([]);
 
+  const isAuthenticated = () => {
+    const token = localStorage.getItem("token")
+    return !!token
+  }
+
     const fetchCart = async()=>{
+      if (!isAuthenticated()) {
+      console.log('User not authenticated, skipping cart fetch')
+      return
+    }
       setLoading(true);
       try {
         const response =  await getCartById();

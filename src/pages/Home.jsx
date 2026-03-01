@@ -14,10 +14,7 @@ function Home() {
         </div>
 
         <HomeProducts selectedCategory={categoryId} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-        <div className="container mt-4">
-          <h2>Welcome to EasyBuy</h2>
-          <p>Check out our latest products and offers!</p>
-        </div>
+        
       </div>
      
     </>

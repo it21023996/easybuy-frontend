@@ -2,6 +2,10 @@
   padding: 24px;
   max-width: 1200px;
   margin: 0 auto;
+  background: linear-gradient(135deg, #ffeed9 0%, #ffffff 50%, #fff2e0 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 /* TABLE STRUCTURE */

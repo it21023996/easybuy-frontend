@@ -1,0 +1,306 @@
+/* ===== REGISTER PAGE VERSION ===== */
+.register-page-wrapper {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffeed9 0%, #ffffff 50%, #fff2e0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* form card - MUCH WIDER */
+.register-page-wrapper form {
+  width: 100%;
+  max-width: 750px; /* Increased from 550px to 750px for much more width */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px 50px; /* More padding */
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 145, 0, 0.15);
+}
+
+/* title */
+.register-title {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 36px; /* Slightly larger */
+  font-weight: 700;
+  text-align: center;
+  color: #ff8800;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+/* features section - 3 items for register */
+.register-features {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  gap: 15px;
+  background: #fff8f0;
+  padding: 18px 20px;
+  border-radius: 14px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.feature-icon {
+  font-size: 28px; /* Larger icons */
+}
+
+.feature-text {
+  font-size: 15px; /* Larger text */
+  font-weight: 600;
+  color: #110303;
+  text-align: center;
+}
+
+.feature-text-sub {
+  font-size: 12px; /* Larger subtext */
+  color: #666;
+  text-align: center;
+}
+
+/* form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px; /* Larger labels */
+  font-weight: 600;
+  color: #555;
+  margin-left: 2px;
+}
+
+/* inputs - LARGER */
+.register-page-wrapper input {
+  padding: 14px 16px; /* More padding for larger inputs */
+  border: 1px solid #e0e0e0;
+  border-radius: 12px; /* More rounded */
+  font-size: 15px; /* Larger font */
+  outline: none;
+  width: 100%;
+  transition: all 0.2s ease;
+  background-color: #fafafa;
+  box-sizing: border-box;
+}
+
+.register-page-wrapper input:hover {
+  border-color: #ff9100;
+  background-color: #ffffff;
+}
+
+.register-page-wrapper input:focus {
+  border-color: #ff9100;
+  box-shadow: 0 0 0 3px rgba(255, 145, 0, 0.15);
+  background-color: #ffffff;
+}
+
+/* password field wrapper */
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 50px; /* More space for eye icon */
+}
+
+/* eye icon - LARGER */
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px; /* Larger icon */
+  user-select: none;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #ff9100;
+}
+
+/* password match indicator */
+.password-match {
+  font-size: 14px; /* Larger text */
+  padding: 8px 0;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.match-success {
+  color: #00a86b;
+  background-color: #e6f7ee;
+  padding: 8px;
+}
+
+.match-error {
+  color: #ff4444;
+  background-color: #ffeeee;
+  padding: 8px;
+}
+
+/* submit button container */
+.register-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* submit button - LARGER */
+.register-button {
+  padding: 16px 40px; /* More padding */
+  min-width: 250px; /* Wider minimum width */
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff9100 0%, #ff6b00 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 18px; /* Larger font */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(255, 145, 0, 0.25);
+  text-align: center;
+  display: inline-block;
+}
+
+.register-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ff6b00 0%, #ff9100 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 145, 0, 0.35);
+}
+
+.register-button:disabled {
+  background: #954804;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+/* messages */
+.message {
+  font-size: 15px; /* Larger */
+  text-align: center;
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.message-success {
+  background-color: #e6f7ee;
+  color: #00a86b;
+  border: 1px solid #b3e6cc;
+}
+
+.message-info {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffe69c;
+}
+
+.message-error {
+  font-size: 15px;
+  text-align: center;
+  color: #f90000;
+  background-color: #ffeeee;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ffb3b3;
+  margin-top: 8px;
+}
+
+/* login link */
+.login-text {
+  font-size: 15px;
+  text-align: center;
+  color: #666;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.login-link {
+  color: #ff9100;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: #ff6b00;
+  text-decoration: underline;
+}
+
+/* required field indicator */
+.form-group label::after {
+  content: " *";
+  color: #ff4444;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+/* non-required fields don't show asterisk */
+.form-group:has(input:not([required])) label::after {
+  content: "";
+}
+
+/* responsive adjustments */
+@media (max-width: 800px) {
+  .register-page-wrapper form {
+    max-width: 90%; /* Takes 90% of screen width on tablets */
+    padding: 30px 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .register-page-wrapper form {
+    max-width: 95%;
+    padding: 25px 20px;
+  }
+  
+  .register-features {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .feature-item {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  
+  .feature-icon {
+    font-size: 28px;
+  }
+  
+  .register-title {
+    font-size: 30px;
+  }
+  
+  .register-button {
+    min-width: 200px;
+    padding: 14px 30px;
+    font-size: 16px;
+  }
+}
