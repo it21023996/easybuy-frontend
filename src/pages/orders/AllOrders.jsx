@@ -12,6 +12,8 @@ function AllOrders() {
   const [orders,setOrders] = useState([])
   const [loading,setLoading] = useState(false)
   const [message,setMessage] = useState("")
+  const [totalElements,setTotalElements] = useState(0)
+  const [totalPages,setTotalPages] = useState(0)
   
     
     
@@ -21,8 +23,10 @@ function AllOrders() {
         const response =  await getAllOrders(orderStatus,categoryId,productName,pageNumber,pageSize)
         console.log("Is array?", Array.isArray(response.data.data))
 console.log("Type:", typeof response.data.data)
-        setOrders(response.data.data)
+        setOrders(response.data.data.content)
         console.log(response.data)
+        setTotalElements(response.data.data.totalElements)
+        setTotalPages(response.data.data.totalPages)
       }catch(error){
         setMessage("Error fetching orders: " + error.message)
       }finally {
@@ -30,6 +34,8 @@ console.log("Type:", typeof response.data.data)
         }
     
   },[orderStatus,categoryId,productName,pageNumber,pageSize]);
+
+
 
   useEffect(() => {
         getAllOrdersData();
@@ -43,10 +49,27 @@ console.log("Type:", typeof response.data.data)
       [orderId]: !prev[orderId]
     }));
   };
-  
+  const handlechange =(e) => {
+    const value = e.target.value;
+    setOrderStatus(value);
+    if(onChange){
+      onChange(value)
+    }
+  }
 
   return (
     <>
+
+    <div className="orders-filter-container">
+      <span className="filter-label">Filter by Status:</span>
+      <select value={orderStatus} onChange={handlechange} className="status-select">
+        <option value="">All Status</option>
+        <option value="PENDING">PENDING</option>
+        <option value="PROCESSING">PROCESSING</option>
+        <option value="COMPLETED">COMPLETED</option>
+        <option value="CANCELLED">CANCELLED</option>
+      </select>
+      </div>
     <div className="order-table-container">
       <table className="table order-table">
         <tbody>
@@ -147,6 +170,17 @@ console.log("Type:", typeof response.data.data)
           )}
         </tbody>
       </table>
+      <div className="d-flex justify-content-center align-items-center my-4 gap-3">
+      <button disabled={pageNumber === 0} onClick={() => setPageNumber(prev => prev -1)} className="btn btn-primary btn-sm">
+        Previous
+        </button>
+      <span className="page-info">
+        Page {pageNumber+1} of {totalPages}
+        </span>
+      <button disabled={pageNumber+1 >= totalPages} onClick={()=> setPageNumber(prev => prev +1)} className="btn btn-primary btn-sm">
+        Next
+        </button>
+    </div>
     </div>
     </>
   )

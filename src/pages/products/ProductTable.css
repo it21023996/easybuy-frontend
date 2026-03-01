@@ -308,7 +308,7 @@
     margin-bottom: 0;
 }
 
-/* Category Dropdown */
+/* Category Dropdown /
 .add-product-form-group {
     display: flex;
     flex-direction: column;
@@ -329,11 +329,12 @@
 .category-dropdown-style {
     width: 100%;
     padding: 10px 15px;
-    border: 2px solid #e9ecef;
+    border: 2px solid #1463b3;
     border-radius: 10px;
     font-size: 14px;
-    color: #495057;
-    background-color: white;
+    
+    color: #de2900;
+    background-color: rgb(240, 108, 8);
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -345,7 +346,7 @@
 .category-dropdown-style:focus {
     outline: none;
     border-color: #fd7e14;
-    box-shadow: 0 0 0 3px rgba(253, 126, 20, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 116, 3, 0.1);
 }
 
 /* Toggle Switch Styles */
@@ -627,3 +628,4 @@
     margin: 0;
     padding: 20px;
 }
+

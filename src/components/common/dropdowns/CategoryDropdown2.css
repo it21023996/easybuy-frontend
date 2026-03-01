@@ -1,0 +1,75 @@
+.category-select {
+    width: 100%;
+    padding: 12px 42px 12px 14px;
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #eb0000;
+    background-color: #9e1010;
+
+    border: 2px solid #f19409;
+    border-radius: 10px;
+
+    cursor: pointer;
+    outline: none;
+
+    /* remove ugly default arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* custom arrow */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23ff9800' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+
+    transition: all 0.25s ease;
+}
+
+/* hover */
+.category-select:hover {
+    border-color: #fb8c00;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.15);
+}
+
+/* focus */
+.category-select:focus {
+    border-color: #f57c00;
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.25);
+}
+
+/* options (best effort only) */
+.category-select option {
+    background: #ad1a1a;
+    color: #333;
+    padding: 10px;
+}
+
+/* placeholder */
+.category-select option:first-child {
+    color: #820303;
+    font-style: italic;
+}
+
+/* Optional: Add styles for the container div */
+.nav-category-dropdown {
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
+}
+
+/* When the placeholder option (All Categories) is selected */
+.category-select option[value=""] {
+    color: #dc0000; /* Your desired color for the placeholder */
+}
+
+/* Style for the selected option (including placeholder) */
+.category-select:invalid,
+.category-select option:checked {
+    /* This affects the currently displayed text */
+}
+
+/* This specifically targets the select when the placeholder is selected */
+.category-select.placeholder-selected {
+    color: #ff6b6b; /* Reddish color for placeholder */
+}

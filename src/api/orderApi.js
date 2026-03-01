@@ -12,8 +12,10 @@ export const getAllOrders = (orderStatus,categoryId,productName,page,size)=>{
     return axiosInstance.get("/orders", { params })
 }
 
-export const getOrdersById = (userId,orderStatus,page,size)=>{
-    return axiosInstance.get(`/orders/get-orders-by-id/${userId}`,orderStatus,page,size)
+export const getOrdersById = (orderStatus,page,size)=>{
+    const params = {page,size}
+    if(orderStatus) params.orderStatus = orderStatus;
+    return axiosInstance.get(`/orders/me`, { params })
 }
 
 export const cancelOrder = (orderId,orderStatus)=>{

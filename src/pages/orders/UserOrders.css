@@ -1,0 +1,235 @@
+/* Main page container */
+.container {
+  max-width: 1100px;
+}
+
+/* Title */
+.cart-title h2 {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Grid for all orders */
+.cart-items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Each order card */
+.cart-item-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  border: 3px solid #d52a0c;
+  flex-direction: column;
+}
+
+/* Order ID */
+.cart-item-id {
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+/* ===== PRODUCTS SECTION ===== */
+
+.products-container {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+}
+
+.products-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Product grid */
+.order-items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+
+
+}
+
+/* Single product card */
+.order-item-card {
+  display: flex;
+  gap: 14px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+/* Product image */
+.order-item-image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Product details */
+.order-item-details p {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+.order-item-name {
+  font-weight: 600;
+  color: #222;
+}
+
+/* ===== ORDER SUMMARY BOX ===== */
+
+.order-details-container {
+   background: #f8fbff;
+  border: 1px solid #5083c6;
+  border-radius: 18px;
+  padding: 18px;
+  margin-top: 18px;   /* 🔥 spacing from products */
+  width: 100%;        /* 🔥 full width */
+  display: block;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+     clear: both;
+    position: relative;
+    z-index: 1;
+}
+
+.order-summary-title {
+  font-weight: 700;
+  margin-bottom: 14px;
+  font-size: 16px;
+}
+
+/* Grid inside summary */
+.order-details-grid {
+  display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  font-size: 14px;
+}
+.detail-item.total {
+    grid-column: span 2;
+    background: #f0f4ff;
+    padding: 1.2rem;
+    border-radius: 12px;
+    border: 1px solid #667eea;
+}
+
+.detail-item.full-width {
+  grid-column: span 2;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Total highlight */
+.total-amount {
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+/* ===== STATUS BADGES ===== */
+
+.status-pending {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.status-delivered {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.status-cancelled {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* ===== ACTION BUTTON ===== */
+
+.order-actions {
+  margin-top: 16px;
+  text-align: right;
+}
+
+.cancel-order {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.cancel-order:hover {
+  background: #dc2626;
+}
+
+/* ===== EMPTY STATE ===== */
+
+.empty-state {
+  font-size: 22px;
+  font-weight: 600;
+  color: #999;
+}
+/* Base badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 999px; /* 🔥 pill shape */
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  text-transform: capitalize;
+  min-width: 90px;
+}
+
+/* ===== COMPLETED (BLUE) ===== */
+.status-completed {
+  background-color: #0d6efd; /* Bootstrap blue */
+}
+
+/* Optional other statuses */
+
+.status-pending {
+  background-color: #f59e0b;
+}
+
+.status-cancelled {
+  background-color: #ef4444;
+}
+
+.status-processing {
+  background-color: #10b981;
+}

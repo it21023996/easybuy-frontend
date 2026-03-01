@@ -88,7 +88,7 @@ function NavBar({onCategoryChange,searchTerm,setSearchTerm}) {
   {
     label : "Account",
     Children : [
-      {label : "View Account",path : "/"},
+      {label : "View Account",path : "/my-account"},
       {label : "update/Delete Account",path : "/"}
     ]
   },{
@@ -114,8 +114,8 @@ function NavBar({onCategoryChange,searchTerm,setSearchTerm}) {
   {
     label : "Account",
     Children : [
-      {label : "View Account",path : "/"},
-      {label : "update/Delete Account",path : "/"}
+      {label : "View Account",path : "/my-account"},
+      {label : "update/Delete Account",path : "/edit-my-account"}
     ]
   },{
     label : "LogOut",action: "logout",

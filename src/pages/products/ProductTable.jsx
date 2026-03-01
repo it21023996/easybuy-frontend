@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getAllProducts } from '../../api/productApi'
 import { useNavigate } from 'react-router-dom'
 import './ProductTable.css'
-import CategoryDropdown from '../../components/common/dropdowns/CategoryDropdown'
+import CategoryDropdown from '../../components/common/dropdowns/CategoryDropdown2'
 function ProductTable() {
     const navigate = useNavigate();
     const [products,setProducts] = useState([])
@@ -99,7 +99,8 @@ function ProductTable() {
             </div>
     <div className="add-product-form-group">
                     <label htmlFor='categories' className='add-product-label form-label'>Product Categories</label>
-                    <CategoryDropdown id='categories' onChange={setCategoryId} className="category-dropdown-style" value={categoryId}/>
+                    <CategoryDropdown id='categories' onChange={setCategoryId} value={categoryId}  containerClassName="my-container-class" 
+    selectClassName="my-select-class" />
                 </div>
                 </div></div>
     <table className="product-table">

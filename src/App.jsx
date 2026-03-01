@@ -12,6 +12,9 @@ import AllOrders from './pages/orders/AllOrders.jsx'
 import Test from './pages/Test.jsx'
 import Cart from './pages/cart/Cart.jsx'
 import UserOrders from './pages/orders/UserOrders.jsx'
+import AccountPage from './pages/accounts/AccountPage.jsx'
+import UpdateAccountPage from './pages/accounts/UpdateAccountPage.jsx'
+import Register from './pages/auth/Register.jsx'
 function App() {
   
   return (
@@ -19,8 +22,9 @@ function App() {
 
     <Route element={<LayoutRoutes/>}>
     <Route path = "/" element={<Home/>}></Route>
-     <Route path = "/test" element={<Test/>}></Route>
+    <Route path = "/test" element={<Test/>}></Route>
     <Route path = "/login" element={<Login/>}></Route>
+    <Route path = "/register" element={<Register/>}></Route>
     <Route path = "/dashboard" element={<ProtectedRoutes><Dashboard/></ProtectedRoutes>}></Route>
     <Route path = "/products/add-product" element={<ProtectedRoutes><AddProducts/></ProtectedRoutes>}></Route>
     <Route path = "/products/product-table" element={<ProtectedRoutes><ProductTable/></ProtectedRoutes>}></Route>
@@ -28,6 +32,8 @@ function App() {
     <Route path = "/cart" element={<ProtectedRoutes><Cart/></ProtectedRoutes>}></Route>
     <Route path = "/orders" element={<ProtectedRoutes><AllOrders/></ProtectedRoutes>}></Route>
     <Route path = "/my-orders" element={<ProtectedRoutes><UserOrders/></ProtectedRoutes>}></Route>
+    <Route path = "/my-account" element={<ProtectedRoutes><AccountPage/></ProtectedRoutes>}></Route>
+    <Route path = "/edit-my-account" element={<ProtectedRoutes><UpdateAccountPage/></ProtectedRoutes>}></Route>
     </Route>
    </Routes>
   )

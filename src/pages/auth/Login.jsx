@@ -1,7 +1,7 @@
 import { useState,useContext } from 'react'
 import { loginUser } from '../../api/authApi';
 import { AuthContext } from '../../context/authContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import './Login.css'
 function Login({isModal = false,onClose}) {
     const{ login } = useContext(AuthContext);
@@ -13,6 +13,8 @@ function Login({isModal = false,onClose}) {
 
     const[loading,setLoading] = useState(false);
     const[message,setMessage] = useState("");
+
+    const [isNavigating, setIsNavigating] = useState(false);
     
     const handleLogin = async(e)=>{
         e.preventDefault();
@@ -28,6 +30,7 @@ function Login({isModal = false,onClose}) {
         login(res.data.data);
         setMessage("Login Successfull");
         console.log(res.data.data);
+        setIsNavigating(true);
         navigate('/')
         if(onClose) onClose();
     }catch(err){
@@ -37,6 +40,11 @@ function Login({isModal = false,onClose}) {
         setLoading(false); 
     }
     };
+
+    if (isNavigating) {
+        return <div className="redirecting">Redirecting...</div>;
+    }
+
   return (
     <>
         <div className = {!isModal ? 'login-page-wrapper': '' }>
@@ -74,7 +82,9 @@ function Login({isModal = false,onClose}) {
                 type ="submit" disabled={loading}>{loading ? "logged in..." : "Login"}</button>
 
                 <p className='register-text'>Don't have an Account? 
+                    <Link to="/register"  onClick={() => setIsNavigating(true)} >
                     <span className='register-link'>Create one</span>
+                    </Link>
                 </p>
 
                 {message && <p className='message-error '>{message}</p>}
